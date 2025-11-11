@@ -1,0 +1,67 @@
+// NO NEED THIS SUBMIT THIS CLASS
+public class WRM {
+    Patient dh;
+
+    //The constructor is already created for you
+    public WRM() {
+        dh = new Patient(null, null, null, null, null, null);
+        dh.next = dh;
+        dh.prev = dh;
+    }
+
+    public void registerPatient(int id, String name, int age, String bloodgroup) {
+         Patient newPatient = new Patient(id, name, age, bloodgroup, null, null);
+    
+       newPatient.prev = dh.prev;
+       newPatient.next = dh;
+       dh.prev.next = newPatient;
+       dh.prev = newPatient;
+    }
+
+    public void servePatient() {
+           if (dh.next == dh) {
+        System.out.println("No patient to serve.");
+        return;
+    }
+     Patient first = dh.next;
+      dh.next = first.next;
+       dh.next.prev = dh;
+      System.out.println("Serving patient: " + first.name + " (ID: " + first.id + ")");
+    }
+
+    public void showAllPatient(){
+           if (dh.next==dh) {
+        System.out.println("No patients waiting.");
+        return;
+    }
+    Patient temp =dh.next;
+    System.out.print("Patient IDs in order: ");
+    while (temp!=dh){
+        System.out.print(temp.id +" ");
+        temp=temp.next;
+    };
+    }
+    public Boolean canDoctorGoHome(){
+        return dh.next==dh;
+    }
+
+    public void cancelAll(){
+          dh.next = dh;
+    dh.prev = dh;
+    System.out.println("All appointments have been cancelled.");
+    }
+
+
+    public void reverseTheLine() {
+          Patient current = dh;
+    do {
+        Patient temp=current.next;
+        current.next=current.prev;
+        current.prev=temp;
+        current =temp;
+    } while (current != dh);
+
+    System.out.println("The line has been reversed.");
+    }
+
+}

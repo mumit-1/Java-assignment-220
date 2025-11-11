@@ -1,0 +1,191 @@
+//Task-01
+    public static String checkSimilar( Node building1, Node building2 ){
+         String a = "";
+       while(building1!=null || building2!=null){
+         
+           if(building1!=null && building2!=null && building1.elem.equals(building2.elem)){
+            a="Similar";
+           }
+           else if(building1!=null && building2!=null){
+          a="Not Similar";
+            break;
+         }
+           else{
+            a="Not Similar";
+            break;
+           }
+           building1=building1.next;
+           building2=building2.next;
+       }
+        return a;
+    }
+
+
+//Task-02
+    public static Node organizeBooks(Node head, Integer[] popularity) {
+      Node need = head;
+      for(int i=0;i<(popularity.length);i++){
+         Node need1 = need.next;
+        for(int j=(i+1);j<(popularity.length);j++){
+          if(popularity[i]<popularity[j] ){
+            int temp = popularity[i];
+            popularity[i]=popularity[j];
+            popularity[j]=temp;
+              String x=(String)need.elem;
+                need.elem=need1.elem;
+                need1.elem=x;
+          }
+          need1=need1.next;
+        }
+          need=need.next;
+      }
+        return head;
+      }
+
+
+//Task-03
+    public static Node alternateMerge( Node head1, Node head2 ){
+      Node boss = head1;
+      while(head1!=null && head2!=null){
+        Node need1=head1.next; 
+        Node need2=head2.next; 
+        
+        head1.next=head2;
+       head2.next=need1;
+       
+        head1=need1;
+        head2=need2;
+      }
+        return boss;
+    }
+
+
+
+//Task-04
+ public static Node idGenerator(Node head1, Node head2, Node head3) {
+      Node x1= head1;  
+      Node x2= head2;  
+      Node x3= head3;  
+      Node x4 = null;
+ 
+      Node x5=head1;
+      Node p = null;
+      while(x5!=null){
+        Node q1=x5.next;
+        x5.next=p;
+        p=x5;
+        x5=q1;
+      }
+      
+     head1=p;
+//      
+      x5=p;
+           while(x5!=null){
+
+        if(x5.next==null) x4=x5; 
+      x5=x5.next;
+      }
+       while(x2!=null && x3!=null){
+           Node need1=x2.next;
+           Node need2=x3.next;
+           int a= (int) x2.elem;
+           int a2= (int) x3.elem;
+           if(a+a2>9)  x2.elem=((a+a2)%10);
+             else x2.elem=(a+a2);
+
+           x2=need1;
+           x3=need2;
+
+       }
+        x4.next=head2;
+        return head1; 
+    }
+
+
+
+//Task-05
+public static void sumOddAppend(Node dh) {
+    Node x = dh;
+    int sum = 0;
+    while (x.next!=dh){
+        int need =(int)x.next.elem;
+        if (need%2!=0){
+            sum+=need;
+            x.next=x.next.next;
+        }
+        else{
+            x=x.next;
+        }
+    }
+    Node x2 = new Node(sum);
+    x.next=x2;
+    x2.next=dh;
+
+}
+
+
+
+//Tassk-06
+ public static void pairJoin(DNode dh1, DNode dh2) {
+        DNode s1=dh1.next;
+        DNode s2=dh2.next;
+
+        while(s1!=null && s2!=null){
+            DNode a1=s1.next;
+            DNode a2=s2.next;
+           
+
+            s1.next=s2;
+            s2.prev=s1;
+            if(a1!=null){
+              s2.next=a1;
+              a1.prev=s2;
+            }
+            else{
+              s2.next=dh1;
+              dh1.prev=s2;
+            }
+            
+            s1=a1;
+            s2=a2;
+            
+            
+        }
+        
+    }
+
+
+
+//Task-07
+  public static void rangeMove(DNode dh, int start, int end) {
+        DNode x1 = dh.next;
+        DNode x2 = dh.prev;
+        while(x1!=dh){
+          if(x1==x2) break;
+        DNode a1=x1.next;
+        
+       
+        int n =(int) x1.elem;
+        if(n>=start && n<=end){
+          DNode c1 = x1.next;
+          DNode c2 = x1.prev;
+          DNode c3 = c2.next;
+          DNode c4 = c1.prev;
+          
+        
+          
+          
+          x1.prev.next=c1;
+          x1.next.prev=c2;
+           
+          DNode last = dh.prev; 
+          x1.prev=last;
+          x1.next=dh;
+          last.next=x1;
+          dh.prev=x1;
+        }
+        
+        x1=a1;
+        }
+    }
+
