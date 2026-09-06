@@ -5,7 +5,9 @@ public class AssignmentTask7 {
         DNode x1 = dh.next;
         DNode x2 = dh.prev;
         while(x1!=dh){
-          if(x1==x2) break;
+
+
+          // if(x1==x2) break; 
         DNode a1=x1.next;
         
        
@@ -13,16 +15,14 @@ public class AssignmentTask7 {
         if(n>=start && n<=end){
           DNode c1 = x1.next;
           DNode c2 = x1.prev;
-          DNode c3 = c2.next;
-          DNode c4 = c1.prev;
-          
+       
         
           
           
           x1.prev.next=c1;
           x1.next.prev=c2;
            
-          DNode last = dh.prev; 
+          DNode last = dh.prev; // last = 4 
           x1.prev=last;
           x1.next=dh;
           last.next=x1;

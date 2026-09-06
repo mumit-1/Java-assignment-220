@@ -1,0 +1,45 @@
+Task-1
+
+    private int hashFunction( Integer key ){
+        int h = (key + 3) % ht.length;
+
+
+        return h; //remove this line
+    }
+    public void remove( Integer key ){
+        int need = hashFunction(key);
+        PairNode head = ht[need];
+        if(head==null) return;
+        PairNode n = null;
+        while(head!=null){
+            if(head.key==key){
+                if(n==null){
+                     ht[need]=head.next;   
+                }
+               else{
+                n.next=head.next;
+               }
+               return;
+            }
+            n=head;
+            head=head.next;
+        }
+    }
+
+Task-3
+
+    public static String removeConsecDups(String word){
+ LinkedListQueue need = new LinkedListQueue();
+    for(int i=0;i<word.length();i++){
+        need.enqueue(word.charAt(i));
+    }
+    String ok1 = "";
+    char x1 = ' ';
+    while(!need.isEmpty()){
+        char x2 = (char)need.dequeue();
+        if(x1!=x2) ok1+=x2;
+        x1=x2;
+    }
+ // You MUST create a LinkedListQueue Object to solve this task
+ return ok1; //remove this line once you're ready
+    }

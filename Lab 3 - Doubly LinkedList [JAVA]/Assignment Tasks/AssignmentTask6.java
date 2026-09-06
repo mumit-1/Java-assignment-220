@@ -9,6 +9,8 @@ public class AssignmentTask6 {
             DNode a1=s1.next;
             DNode a2=s2.next;
            
+        
+
 
             s1.next=s2;
             s2.prev=s1;

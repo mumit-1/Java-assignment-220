@@ -14,6 +14,8 @@ public static void sumOddAppend(Node dh) {
             x=x.next;
         }
     }
+
+    
     Node x2 = new Node(sum);
     x.next=x2;
     x2.next=dh;

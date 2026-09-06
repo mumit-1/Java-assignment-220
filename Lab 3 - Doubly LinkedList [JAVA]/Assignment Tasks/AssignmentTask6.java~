@@ -2,22 +2,31 @@ public class AssignmentTask6 {
 
     //SUBMIT ONLY THIS METHOD
     public static void pairJoin(DNode dh1, DNode dh2) {
-        Node s1=dh1.next;
-        Node s2=dh2.next;
+        DNode s1=dh1.next;
+        DNode s2=dh2.next;
 
         while(s1!=null && s2!=null){
-            Node a1=s1.next;
-            Node a2=s2.next;
-            Node p1=a1.prev;
-            Node p2=a2.prev;
+            DNode a1=s1.next;
+            DNode a2=s2.next;
+           
+        
+
 
             s1.next=s2;
             s2.prev=s1;
-            s2.next=a2;
-            p1=s2;
-
+            if(a1!=null){
+              s2.next=a1;
+              s1.next.prev=s2;
+            }
+            else{
+              s2.next=dh1;
+              dh1.prev=s2;
+            }
+            
             s1=a1;
             s2=a2;
+            
+            
         }
         
     }
